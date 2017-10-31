@@ -5,3 +5,8 @@ Uses:
   - JQuery and Bootstrap frontend
 
 react-native-app is not currently used.
+
+Todo:
+  - write php backend
+  - create frontend form with JQuery and promises for http requests
+  - use bootstrap to make it pretty
