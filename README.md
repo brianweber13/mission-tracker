@@ -1,12 +1,12 @@
 Includes everything needed, from front to back.
 
 Uses:
-  - php and mySQL backend
+  - python and mySQL backend
   - JQuery and Bootstrap frontend
 
 react-native-app is not currently used.
 
 Todo:
-  - write php backend
+  - write python backend
   - create frontend form with JQuery and promises for http requests
   - use bootstrap to make it pretty
