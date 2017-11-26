@@ -75,8 +75,23 @@ WSGI_APPLICATION = 'MissionTracker.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # # mysql config
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'mission_tracker',
+        # 'USER': 'python-app',
+        # 'PASSWORD': os.environ['MISSION_TRACKER_MYSQL_PYTHON_PASSWORD'],
+        # # 'HOST': '/var/lib/mysql/mysql.sock',
+        # 'HOST': '',
+        # 'PORT': '3306'
+
+        # postgresql config
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mission_tracker',
+        'USER': 'python_app',
+        'PASSWORD': os.environ['MISSION_TRACKER_MYSQL_PYTHON_PASSWORD'],
+        # 'HOST': '/var/lib/mysql/mysql.sock',
+        'HOST': '',
+        'PORT': '5432'
     }
 }
 
@@ -105,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Denver'
 
 USE_I18N = True
 
