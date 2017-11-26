@@ -4,3 +4,6 @@ npm-debug.*
 
 # vim swap files
 *.swp
+
+# caches
+__pycache__
