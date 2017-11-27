@@ -3,78 +3,86 @@ from __future__ import unicode_literals
 
 from django.db import models
 
-class EventNames(models.Model):
+class EventPossibility(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=40)
 
     class Meta:
         # managed = False
-        db_table = 'event_names'
+        db_table = 'event_possibility'
 
 
-class Events(models.Model):
+class Event(models.Model):
     id = models.AutoField(primary_key=True)
-    investigator = models.ForeignKey('Investigators', models.PROTECT, db_column='investigator')
+    event_possibility_id = models.ForeignKey(EventPossibility, models.PROTECT)
+    investigator_id = models.ForeignKey('Investigator', models.PROTECT)
     date = models.DateField()
-    type = models.ForeignKey(EventNames, models.PROTECT, db_column='type')
 
     class Meta:
         # managed = False
-        db_table = 'events'
+        db_table = 'event'
 
 
-class Goals(models.Model):
+class Goal(models.Model):
     id = models.AutoField(primary_key=True)
-    ward = models.ForeignKey('Wards', models.PROTECT, db_column='ward')
-    date = models.DateField()
-    type = models.ForeignKey(EventNames, models.PROTECT, db_column='type')
+    event_possibility_id = models.ForeignKey(EventPossibility, models.PROTECT)
     amount = models.IntegerField()
+    date = models.DateField()
+    ward_id = models.ForeignKey('Ward', models.PROTECT)
 
     class Meta:
         # managed = False
-        db_table = 'goals'
+        db_table = 'goal'
 
 
-class Investigators(models.Model):
+class Investigator(models.Model):
     id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=20, blank=True, null=True)
     last_name = models.CharField(max_length=20, blank=True, null=True)
-    ward = models.ForeignKey('Wards', models.PROTECT, db_column='ward')
+    ward_id = models.ForeignKey('Ward', models.PROTECT)
     status = models.CharField(max_length=20, blank=True, null=True)
-    baptismal_date = models.DateField()
+    baptismal_date = models.DateField(blank=True, null=True)
 
     class Meta:
         # managed = False
-        db_table = 'investigators'
+        db_table = 'investigator'
 
 
-class Missionaries(models.Model):
+class Missionary(models.Model):
     id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     username = models.CharField(max_length=20)
     password = models.CharField(max_length=300)
-    ward = models.ForeignKey('Wards', models.PROTECT, db_column='ward')
+    ward_id = models.ForeignKey('Ward', models.PROTECT)
 
     class Meta:
         # managed = False
-        db_table = 'missionaries'
+        db_table = 'missionary'
 
 
-class Stakes(models.Model):
+class Stake(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=20)
 
     class Meta:
         # managed = False
-        db_table = 'stakes'
+        db_table = 'stake'
 
-
-class Wards(models.Model):
+class StatusPossibility(models.Model):
     id = models.AutoField(primary_key=True)
-    stake_key = models.ForeignKey(Stakes, models.PROTECT, db_column='stake_key')
+    name = models.CharField(max_length=40)
+
+    class Meta:
+        # managed = False
+        db_table = 'status_possibility'
+
+
+class Ward(models.Model):
+    id = models.AutoField(primary_key=True)
+    stake_id = models.ForeignKey(Stake, models.PROTECT)
     name = models.CharField(max_length=20)
 
     class Meta:
         # managed = False
-        db_table = 'wards'
+        db_table = 'ward'
