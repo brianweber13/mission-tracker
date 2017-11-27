@@ -31,12 +31,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # default apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # custom apps
+    'KeyIndicators.apps.KeyindicatorsConfig',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +83,7 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.mysql',
         # 'NAME': 'mission_tracker',
         # 'USER': 'python-app',
-        # 'PASSWORD': os.environ['MISSION_TRACKER_MYSQL_PYTHON_PASSWORD'],
+        # 'PASSWORD': os.environ['PYTHON_APP_DB_USER_PASSWORD'],
         # # 'HOST': '/var/lib/mysql/mysql.sock',
         # 'HOST': '',
         # 'PORT': '3306'
@@ -88,7 +92,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mission_tracker',
         'USER': 'python_app',
-        'PASSWORD': os.environ['MISSION_TRACKER_MYSQL_PYTHON_PASSWORD'],
+        'PASSWORD': os.environ['PYTHON_APP_DB_USER_PASSWORD'],
         # 'HOST': '/var/lib/mysql/mysql.sock',
         'HOST': '',
         'PORT': '5432'
