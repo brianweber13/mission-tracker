@@ -69,6 +69,10 @@ class Stake(models.Model):
         # managed = False
         db_table = 'stake'
 
+    def __str__(self):
+        combined = str(self.id) + " " + self.name
+        return combined
+
 class StatusPossibility(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=40)
@@ -86,3 +90,10 @@ class Ward(models.Model):
     class Meta:
         # managed = False
         db_table = 'ward'
+
+    def __str__(self):
+        combined = str(self.id) + " " + self.name + " " + "Stake #"
+        combined += str(self.stake_id)
+        # use triple quotes here?
+        return combined
+
