@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Missionary
+from .models import Profile
 
-admin.site.register(Missionary)
+admin.site.register(Profile)
 
