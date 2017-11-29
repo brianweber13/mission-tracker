@@ -4,8 +4,6 @@ Uses:
   - python/Django backend using postgreSQL
   - JQuery and Bootstrap frontend
 
-react-native-app is not currently used. There will eventually be a mobile app
-
 How to Set Up:
   - Install python3
   - Install postgres
