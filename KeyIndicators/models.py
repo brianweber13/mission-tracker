@@ -9,12 +9,22 @@ class EventPossibility(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=40)
 
+    def __str__(self):
+        return str(self.id) + ' ' + self.name
+
 
 class Event(models.Model):
     id = models.AutoField(primary_key=True)
     event_possibility = models.ForeignKey(EventPossibility, models.PROTECT)
     investigator = models.ForeignKey('Investigator', models.PROTECT)
     date = models.DateField()
+
+    def __str__(self):
+        combined = str(self.id) + ' investigator: '
+        combined += self.investigator.first_name + ' '
+        combined += self.investigator.last_name + ', event: '
+        combined += self.event_possibility.name + ', date: '
+        combined += self.date
 
 
 class Goal(models.Model):
@@ -32,15 +42,6 @@ class Investigator(models.Model):
     ward = models.ForeignKey('Ward', models.PROTECT)
     status = models.CharField(max_length=20, blank=True, null=True)
     baptismal_date = models.DateField(blank=True, null=True)
-
-
-class Missionary(models.Model):
-    id = models.AutoField(primary_key=True)
-    first_name = models.CharField(max_length=20)
-    last_name = models.CharField(max_length=20)
-    username = models.CharField(max_length=20)
-    password = models.CharField(max_length=300)
-    ward = models.ForeignKey('Ward', models.PROTECT)
 
 
 class Stake(models.Model):
@@ -72,6 +73,9 @@ class Ward(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     ward = models.ForeignKey(Ward, models.PROTECT)
+
+    def __str__(self):
+        return "username: " + self.user.username + ", ward: " + self.ward.name
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
