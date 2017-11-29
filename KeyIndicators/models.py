@@ -1,15 +1,13 @@
-# Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 from __future__ import unicode_literals
 
 from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class EventPossibility(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=40)
-
-    class Meta:
-        # managed = False
-        db_table = 'event_possibility'
 
 
 class Event(models.Model):
@@ -18,10 +16,6 @@ class Event(models.Model):
     investigator_id = models.ForeignKey('Investigator', models.PROTECT)
     date = models.DateField()
 
-    class Meta:
-        # managed = False
-        db_table = 'event'
-
 
 class Goal(models.Model):
     id = models.AutoField(primary_key=True)
@@ -29,10 +23,6 @@ class Goal(models.Model):
     amount = models.IntegerField()
     date = models.DateField()
     ward_id = models.ForeignKey('Ward', models.PROTECT)
-
-    class Meta:
-        # managed = False
-        db_table = 'goal'
 
 
 class Investigator(models.Model):
@@ -43,10 +33,6 @@ class Investigator(models.Model):
     status = models.CharField(max_length=20, blank=True, null=True)
     baptismal_date = models.DateField(blank=True, null=True)
 
-    class Meta:
-        # managed = False
-        db_table = 'investigator'
-
 
 class Missionary(models.Model):
     id = models.AutoField(primary_key=True)
@@ -56,30 +42,19 @@ class Missionary(models.Model):
     password = models.CharField(max_length=300)
     ward_id = models.ForeignKey('Ward', models.PROTECT)
 
-    class Meta:
-        # managed = False
-        db_table = 'missionary'
-
 
 class Stake(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=20)
 
-    class Meta:
-        # managed = False
-        db_table = 'stake'
-
     def __str__(self):
         combined = str(self.id) + " " + self.name
         return combined
 
+
 class StatusPossibility(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=40)
-
-    class Meta:
-        # managed = False
-        db_table = 'status_possibility'
 
 
 class Ward(models.Model):
@@ -87,13 +62,23 @@ class Ward(models.Model):
     stake_id = models.ForeignKey(Stake, models.PROTECT)
     name = models.CharField(max_length=20)
 
-    class Meta:
-        # managed = False
-        db_table = 'ward'
-
     def __str__(self):
-        combined = str(self.id) + " " + self.name + " " + "Stake #"
-        combined += str(self.stake_id)
-        # use triple quotes here?
+        combined = str(self.id) + " " + self.name
+        # combined = str(self.id) + " " + self.name + ", part of  " + "stake #"
+        # combined += str(self.stake_id)
         return combined
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    ward_id = models.ForeignKey(Ward, models.PROTECT)
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.Profile.save()
 
