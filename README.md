@@ -33,8 +33,8 @@ I recently did a complete Re-evaluation of Goals. Our new goals are as follows:
   - customize (and simplify) admin page
     - user: everything in advanced settings except basic information and ward
       - this can be done by adding to UserAdmin in KeyIndicators/admin.py
-  - design a 'template' with a navbar, header, and footer that can be included
-    in all Django templates. This 'template' will be mobile-first. Some
+  - design a 'base page' with a navbar, header, and footer that can be included
+    in all Django templates. This base page will be mobile-first. Some
     resources have been listed below:
       - https://docs.djangoproject.com/en/2.0/ref/templates/builtins/#include
       - https://getbootstrap.com/docs/4.0/getting-started/introduction/#starter-template
