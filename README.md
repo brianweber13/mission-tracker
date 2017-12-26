@@ -7,7 +7,7 @@ Uses:
 How to Set Up:
   - Install python3
   - Install postgres
-  - create a table named mission_tracker and a user named python_app with full
+  - create a databse named mission_tracker and a user named python_app with full
     permissions on mission_tracker.
   - create an environment variable PYTHON_APP_DB_USER_PASSWORD set to the
     password for the python_app user
@@ -16,5 +16,6 @@ How to Set Up:
 
 Todo:
   - write python backend (see #1)
+    - test requests that return objects and stuff. maybe a json? Then I can just parse it with Javascript or whatever.
   - create frontend form with JQuery and promises for http requests
   - use bootstrap to make it pretty
