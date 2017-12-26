@@ -34,9 +34,16 @@ I recently did a complete Re-evaluation of Goals. Our new goals are as follows:
     - user: everything in advanced settings except basic information and ward
       - this can be done by adding to UserAdmin in KeyIndicators/admin.py
   - design a 'template' with a navbar, header, and footer that can be included
-    in all Django templates. Some resources have been listed below:
+    in all Django templates. This 'template' will be mobile-first. Some
+    resources have been listed below:
       - https://docs.djangoproject.com/en/2.0/ref/templates/builtins/#include
       - https://getbootstrap.com/docs/4.0/getting-started/introduction/#starter-template
+      - Before doing this, I will also read the following pages:
+        - https://docs.djangoproject.com/en/2.0/intro/tutorial03/ (introduces 
+          templates - at least scan this.)
+        - https://docs.djangoproject.com/en/2.0/intro/tutorial04/#use-generic-views-less-code-is-better
+          generic pages - is there one I can use?
+  - list pages that we'll need for actual webapp.
 
 Note: with my recent reevaluation of goals, issue #1 is (temporarily?) being
 ignored. It will most likely be closed soon, as the issue is no longer
