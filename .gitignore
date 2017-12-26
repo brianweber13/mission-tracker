@@ -2,8 +2,11 @@ node_modules/
 .expo/
 npm-debug.*
 
+### Editor stuff ###
 # vim swap files
 *.swp
+# vscode
+.vscode/
 
 # caches
 __pycache__
