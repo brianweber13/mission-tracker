@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-def index(request):
-    return HttpResponse("This is the key indicator view")
+def login(request):
+    context = { 'subtitle' : 'login'}
+    return render(request, 'KeyIndicators/login.html', context)
