@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 
 from .models import Profile, Investigator, Ward, Stake, Event, EventPossibility, Goal, StatusPossibility
 
+admin.site.site_header = 'Mission Tracker Administration'
+
 # Define an inline admin descriptor for Employee model
 # which acts a bit like a singleton
 # see: https://docs.djangoproject.com/en/2.0/topics/auth/customizing/#extending-the-existing-user-model
