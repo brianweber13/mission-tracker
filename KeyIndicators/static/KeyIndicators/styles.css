@@ -1,11 +1,14 @@
 body {
   font: 100% Helvetica, sans-serif;
-  color: #ddd8c4; }
+  color: #ddd8c4;
+  background: #46494c; }
+
+a:hover {
+  color: white; }
 
 nav {
   background: #04151f; }
-
-div#content {
-  background: #46494c; }
+  nav a {
+    color: #ddd8c4; }
 
 /*# sourceMappingURL=styles.css.map */

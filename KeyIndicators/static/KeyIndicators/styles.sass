@@ -8,9 +8,14 @@ $accent-color-red: #993955
 body
   font: 100% $font-stack
   color: $text-color
+  background: $primary-color
+
+a
+  &:hover
+    color: white
 
 nav
   background: $secondary-color
 
-div#content
-  background: $primary-color
+  a
+    color: $text-color
