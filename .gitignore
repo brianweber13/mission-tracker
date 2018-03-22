@@ -10,3 +10,4 @@ npm-debug.*
 
 # caches
 __pycache__
+.sass-cache
