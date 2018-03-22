@@ -44,6 +44,7 @@ I recently did a complete Re-evaluation of Goals. Our new goals are as follows:
         - https://docs.djangoproject.com/en/2.0/intro/tutorial04/#use-generic-views-less-code-is-better
           generic pages - is there one I can use?
   - list pages that we'll need for actual webapp.
+  - hide secret key (fount in settings.py)
 
 Note: with my recent reevaluation of goals, issue #1 is (temporarily?) being
 ignored. It will most likely be closed soon, as the issue is no longer

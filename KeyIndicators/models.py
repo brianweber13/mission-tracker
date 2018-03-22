@@ -10,7 +10,8 @@ class EventPossibility(models.Model):
     name = models.CharField(max_length=40)
 
     def __str__(self):
-        return str(self.id) + ' ' + self.name
+        # return str(self.id) + ' ' + self.name
+        return self.name
 
 
 class Event(models.Model):
@@ -40,7 +41,8 @@ class Investigator(models.Model):
     first_name = models.CharField(max_length=20, blank=True, null=True)
     last_name = models.CharField(max_length=20, blank=True, null=True)
     ward = models.ForeignKey('Ward', models.PROTECT)
-    status = models.CharField(max_length=20, blank=True, null=True)
+    # status = models.CharField(max_length=20, blank=True, null=True)
+    status = models.ForeignKey('StatusPossibility', models.PROTECT, null=True)
     baptismal_date = models.DateField(blank=True, null=True)
 
 
@@ -56,6 +58,9 @@ class Stake(models.Model):
 class StatusPossibility(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=40)
+
+    def __str__(self):
+        return self.name
 
 
 class Ward(models.Model):
