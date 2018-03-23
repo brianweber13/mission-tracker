@@ -1,3 +1,22 @@
-{% extends "KeyIndicators/base.html" %}
-
-{% block subtitle %}{{ subtitle }}{% endblock %}
+{% extends 'KeyIndicators/base_head.html' %} {% block body %}
+<div class="card" id="loginFormContainer">
+  <div class="card-header">
+    Key Indicator Reporting Login
+  </div>
+  <div class="card-body">
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="usernameInput">Email address</label>
+        <input type="text" class="form-control" id="usernameInput" placeholder="Enter username">
+      </div>
+      <div class="form-group">
+        <label for="passwordInput">Password</label>
+        <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn">Login</button>
+      </div>
+    </form>
+  </div> 
+</div>
+{% endblock body %}
