@@ -1,14 +1,25 @@
-body {
-  font: 100% Helvetica, sans-serif;
-  color: #ddd8c4;
-  background: #46494c; }
-
 a:hover {
   color: white; }
 
+body {
+  font: 100% Helvetica, sans-serif;
+  color: #ddd8c4;
+  background: #252628; }
+
 nav {
-  background: #04151f; }
+  background: #46494c; }
   nav a {
     color: #ddd8c4; }
+
+.card {
+  background: #46494c; }
+
+.card-header {
+  font-size: 1.5rem; }
+
+#loginFormContainer {
+  max-width: 25rem;
+  margin: auto;
+  margin-top: 7rem; }
 
 /*# sourceMappingURL=styles.css.map */

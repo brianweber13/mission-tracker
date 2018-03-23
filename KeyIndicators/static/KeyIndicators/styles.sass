@@ -1,21 +1,41 @@
 $font-stack:       Helvetica, sans-serif
-$primary-color:    #46494c
-$secondary-color:  #04151f
+// old color
+// $primary-color: #04151f
+
+// light-on-dark theme
+$primary-color:    #252628
+$secondary-color:  #46494c
+
+// dark-on-light theme
+// $primary-color:    #46494c
+// $secondary-color:  #252628
+
 $text-color:       #ddd8c4
 $accent-color:     #50808e
 $accent-color-red: #993955
+
+a
+  &:hover
+    color: white
 
 body
   font: 100% $font-stack
   color: $text-color
   background: $primary-color
 
-a
-  &:hover
-    color: white
-
 nav
   background: $secondary-color
 
   a
     color: $text-color
+
+.card
+  background: $secondary-color
+
+.card-header
+  font-size: 1.5rem
+
+#loginFormContainer
+  max-width: 25rem
+  margin: auto
+  margin-top: 7rem
