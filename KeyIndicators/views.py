@@ -6,7 +6,7 @@ from django.shortcuts import redirect
 def home(request):
     if request.user.is_authenticated:
         context = { 'subtitle' : 'Home' }
-        return render(request, 'KeyIndicators/base.html', context)
+        return render(request, 'KeyIndicators/base_body.html', context)
     else:
         return redirect('login')
 
