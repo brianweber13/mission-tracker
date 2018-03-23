@@ -1,0 +1,49 @@
+<!-- base body includes navbar and javascript. Fill content block with whatever
+this page requires. -->
+{% extends 'KeyIndicators/base.html' %}
+{% block body %}
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#">{{ title }}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="new-report">New Report</a>
+        </li>
+        <li class="nav-item">
+          <!-- administrators will see reports from all wards as well as
+          aggregate data -->
+          <a class="nav-link" href="past-reports">Past Reports</a>
+        </li>
+        <!-- will only show for administrators -->
+        {% if user.is_superuser or user.is_staff %}
+        <li class="nav-item">
+          <a class="nav-link" href="admin">Administration</a>
+        </li>
+        {% endif %}
+      </ul>
+      <!-- other navbar items, like a search bar, would go here. -->
+    </div>
+  </nav>
+
+  <div id='content'>
+    {% block content %} {% endblock content %}
+  </div>
+
+  <!-- Javascript -->
+  <!-- JQuery: required for some bootstrap functions -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+  crossorigin="anonymous"></script>
+</body>
+{% endblock body %}
